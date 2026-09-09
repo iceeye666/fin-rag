@@ -1,0 +1,19 @@
+# 环境与密钥
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# 运行产物
+storage/
+chroma_db/
+*.log
+
+# 用户上传的真实年报
+data/raw/*.pdf
+!data/raw/.gitkeep
+
+# 保留自动生成的样例年报
+!data/samples/*.pdf

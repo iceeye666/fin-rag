@@ -1,0 +1,41 @@
+# ============================================================
+# 高级 RAG 金融年报智能分析助手 —— 依赖清单
+# Python >= 3.10（推荐 3.11+，本项目在 3.13 上验证通过）
+# ============================================================
+
+# ---------- 核心框架 ----------
+langchain>=1.0.0
+langchain-core>=1.0.0
+langchain-community>=0.4.0
+langchain-text-splitters>=1.0.0
+langchain-chroma>=1.0.0
+langchain-openai>=0.3.0          # 通过 OpenAI 兼容模式调用 qwen-plus
+
+# ---------- 向量库 ----------
+chromadb>=1.0.0
+
+# ---------- 嵌入模型（BAAI/bge-large-zh-v1.5）----------
+sentence-transformers>=3.0.0
+# torch 请按本机平台单独安装，例如 CPU 版：
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+# 无网络 / 无 API Key 环境下可设 EMBED_PROVIDER=hash，用字符 n-gram 兜底
+
+# ---------- PDF 解析 ----------
+# 默认后端：pdfplumber（纯 Python，对有文本层的中文年报表格还原最好、最快）
+pdfplumber>=0.11.0
+# 可选后端：unstructured + hi_res，用于扫描件 / 无文本层的 PDF
+#   pip install "unstructured[pdf]" unstructured-inference
+#   系统依赖：brew install poppler tesseract tesseract-lang
+# unstructured[pdf]>=0.15.0
+# unstructured-inference>=0.7.0
+
+# ---------- 服务与工具 ----------
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+python-multipart>=0.0.20
+pydantic>=2.9.0
+pydantic-settings>=2.6.0
+python-dotenv>=1.0.0
+
+# ---------- 生成样例年报 ----------
+reportlab>=4.2.0
